@@ -1,0 +1,204 @@
+.Login-wrapper {
+  margin: 0 auto;
+  padding: 30px 0
+}
+
+.Login-header {
+  display: flex;
+  flex-wrap: nowrap !important;
+  justify-content: center;
+}
+
+.Login-header .Login-form {
+  width: 320px;
+  margin-top: 2rem;
+}
+
+.Login {
+  width: 320px;
+  border: 1px solid #ddd;
+  background: #fff;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.Login .Login-logo {
+  width: 175px;
+  height: 51px;
+  margin: 32px auto 24px;
+  background: url(https://www.instagram.com/static/bundles/es6/sprite_core_576406ccc24b.png/576406ccc24b.png);
+  background-position: -98px 0px;
+}
+
+.Login .Login-action {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 2rem;
+  position: relative;
+}
+
+.Login .Login-err {
+  position: absolute;
+  top: -1.5rem;
+  font-size: 0.825rem;
+  color: red;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.Login .Login-action .Login-action-account,
+.Login .Login-action .Login-action-password {
+  width: 100%;
+  position: relative;
+  height: 38px;
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+}
+
+.Login .Login-action  input{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border-radius: 0.125rem;
+  outline: none;
+  border: none;
+  padding: 0 0.55rem;
+  font-size: 0.8rem;
+}
+
+.Login .Login-action input:focus{
+  height: 70%;
+}
+
+.Login .Login-action input::placeholder {
+  background: transparent;
+}
+
+
+
+.Login .Login-action .Login-action-account input:focus + label,
+.Login .Login-action .Login-action-password input:focus + label,
+.Login .Login-action .Login-action-account input:valid + label,
+.Login .Login-action .Login-action-password input:valid + label {
+  top: 22%;
+  font-size: 0.8rem;
+}
+
+.Login .Login-action .Login-action-account label,
+.Login .Login-action .Login-action-password label {
+  position: absolute;
+  padding: 0 0.5rem;
+  font-size: 0.925rem;
+  color: #666;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 999;
+  display: block;
+  transition: 0.2s;
+}
+
+.Login .Login-btn {
+  width: 100%;
+  height: 35px;
+  background: rgba(0, 149, 246, 0.3);
+  border: none;
+  outline: none;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1rem;
+  position: relative;
+}
+
+.Login .Login-btn.Show-click {
+  background: #0095f6;
+}
+
+.Login .Login-btn::after {
+  content: "OR";
+  position: absolute;
+  top: calc(50% + 35px);
+  background: #fff;
+  color: #000;
+  width: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.Login hr {
+  border: 0.1px solid #ddd;
+  margin: 1.5rem 0;
+}
+
+.Login a {
+  display: inline-block;
+  margin: 1rem 0;
+  color: #00376b;
+  font-size: 0.825rem;
+  text-decoration: none;
+}
+
+.SignUp {
+  text-align: center;
+  width: 320px;
+  background: #fff;
+  margin: 0 auto;
+  padding: 1.5rem 0;
+  font-size: 0.925rem;
+  border: 1px solid #ddd;
+}
+
+.SignUp a {
+  margin-left: 0.5rem;
+  color: #0095f6;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.Login-form .Get-the-app {
+  display: flex;
+  justify-content: center;
+}
+
+.Login-form .Get-the-app img {
+  width: 40%;
+}
+
+.Login-form .Get-the-app img:nth-child(1) { 
+  margin-right: 1rem;
+}
+
+.Login-form .Text {
+  margin: 1rem 0;
+  text-align: center;
+
+}
+
+.Login-footer {
+  margin-top: 3rem;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.Login-footer .Login-footer-link {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.Login-footer .Login-footer-link a {
+  color: #00376b;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: .75rem;
+  margin-right: 1rem;
+}
+
+.Login-footer .Login-footer-info {
+  font-size: .75rem;
+  color: #777;
+  font-weight: bold;
+  text-align: center;
+}
+
