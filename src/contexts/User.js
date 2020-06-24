@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios'
 
 export const UserContext = React.createContext();
 
@@ -7,12 +8,16 @@ export class UserProvider extends React.Component {
     super(props);
 
     this.state = {
+      userList: [],
+      isLogined: false,
       currentUser: null,
-      isLogined: false
     }
 
     this.handleLogin = this.handleLogin.bind(this)
+    this.setCurrentUser = this.setCurrentUser.bind(this)
+    this.logout = this.logout.bind(this)
   }
+
 
   handleLogin() {
     this.setState({
@@ -20,17 +25,28 @@ export class UserProvider extends React.Component {
     })
   }
 
-  setCurrentUser(obj) {
+  setCurrentUser(user) {
     this.setState({
-      currentUser: obj
+      currentUser: user
+    })
+  }
+
+  logout() {
+    localStorage.clear()
+    this.setState({
+      isLogined: false
     })
   }
 
   componentDidMount() {
+    axios.get('http://localhost:5000/users')
+      .then(res => this.setState({ userList: res.data }))
     const token = localStorage.getItem('token');
+    const user = JSON.parse(localStorage.getItem('user'));
     if (token) {
       this.setState({
-        isLogined: true
+        isLogined: true,
+        currentUser: user
       })
     }
   }
@@ -40,9 +56,11 @@ export class UserProvider extends React.Component {
       <UserContext.Provider
         value={{
           isLogined: this.state.isLogined,
+          userList: this.state.userList,
           handleLogin: this.handleLogin,
           currentUser: this.state.currentUser,
-          setCurrentUser: this.setCurrentUser
+          setCurrentUser: this.setCurrentUser,
+          logout: this.logout
         }}
       >
         {this.props.children}

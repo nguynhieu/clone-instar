@@ -14,6 +14,11 @@
   margin-top: 2rem;
 }
 
+.Login-header .Login-img {
+  flex-grow: 0;
+  min-width: auto;
+}
+
 .Login {
   width: 320px;
   border: 1px solid #ddd;
@@ -78,8 +83,6 @@
 .Login .Login-action input::placeholder {
   background: transparent;
 }
-
-
 
 .Login .Login-action .Login-action-account input:focus + label,
 .Login .Login-action .Login-action-password input:focus + label,

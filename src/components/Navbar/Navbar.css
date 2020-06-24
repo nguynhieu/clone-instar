@@ -1,4 +1,4 @@
-.Navbar {
+.Navbar-wrapper {
   position: fixed;
   width: 100%;
   left: 0;
@@ -7,6 +7,12 @@
   z-index: 1040;
   background-color: #fff;
   border-bottom: 1px solid #ddd;
+}
+
+.Navbar {
+    height: 100%;
+    max-width: 935px;
+    margin: 0 auto;
 }
 
 .Navbar .container {
@@ -23,10 +29,15 @@
 
 .Navbar .Navbar-action {
   height: 100%;
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
+}
+
+.Navbar .Navbar-action > * {
+  cursor: pointer;
 }
 
 .Navbar .Navbar-action svg {
-  margin-left: 1rem
+  margin-left: 1rem;
 }
+

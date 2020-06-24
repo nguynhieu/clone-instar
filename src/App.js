@@ -15,12 +15,15 @@ import Home from './components/pages/Home/Home'
 import Login from './components/pages/Login/Login'
 import Signup from './components/pages/Signup/Signup'
 import Navbar from './components/Navbar/Navbar'
+import { PostProvider } from './contexts/Post';
 
 function AppWrapper() {
   return (
-    <UserProvider>
-      <App />
-    </UserProvider>
+    <PostProvider>
+      <UserProvider>
+        <App />
+      </UserProvider >
+    </PostProvider >
   )
 }
 

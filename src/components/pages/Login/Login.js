@@ -32,9 +32,11 @@ const Login = () => {
     axios.post('http://localhost:5000/users/login', {
       account, password
     }).then(res => {
-      localStorage.setItem('token', res.data)
+      console.log(res.data)
+      localStorage.setItem('token', res.data.token)
+      localStorage.setItem('user', JSON.stringify(res.data.user))
+      setCurrentUser(res.data.user)
       handleLogin()
-      setCurrentUser(res.data);
     }).catch(err => {
       console.log(err)
     })
@@ -54,7 +56,7 @@ const Login = () => {
     <div className="Login-wrapper">
       <Container>
         <div className="Login-header row">
-          <div clasName="Login-img col">
+          <div className="Login-img col">
             <img src={instar2} alt="Img" className="d-none d-lg-block" />
           </div>
           <div className="Login-form">
