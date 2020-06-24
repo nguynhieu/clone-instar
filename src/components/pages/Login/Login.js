@@ -1,14 +1,55 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import classNames from 'classnames'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { Container } from 'reactstrap'
+import axios from 'axios';
 
 import './Login.css'
 import instar2 from '../../../public/images/instar2.png'
 import instar3 from '../../../public/images/instar3.png'
 import instar4 from '../../../public/images/instar4.png'
 
+import { UserContext } from '../../../contexts/User'
+
 const Login = () => {
+  const { isLogined, handleLogin, setCurrentUser } = useContext(UserContext)
+
+  const [account, setAccount] = useState('')
+  const [password, setPassword] = useState('')
+  const [showLoginBtn, setShowLoginBtn] = useState(false);
+
+  const onChangeAccount = (e) => {
+    setAccount(e.target.value);
+  }
+
+  const onChangePassword = (e) => {
+    setPassword(e.target.value);
+  }
+
+  const onSubmit = (e) => {
+    e.preventDefault()
+
+    axios.post('http://localhost:5000/users/login', {
+      account, password
+    }).then(res => {
+      localStorage.setItem('token', res.data)
+      handleLogin()
+      setCurrentUser(res.data);
+    }).catch(err => {
+      console.log(err)
+    })
+  }
+
+  useEffect(() => {
+    if (account.length > 2 && password.length > 5) {
+      setShowLoginBtn(true)
+    } else setShowLoginBtn(false)
+  }, [account.length, password.length])
+
+  if (isLogined) {
+    return <Redirect to="/" />
+  }
+
   return (
     <div className="Login-wrapper">
       <Container>
@@ -19,11 +60,11 @@ const Login = () => {
           <div className="Login-form">
             <div className="Login">
               <div className="Login-logo" />
-              <form>
+              <form onSubmit={onSubmit}>
                 <div className="Login-action">
-                  {/* {errors && <div className="Login-err">{errors}</div>} */}
                   <div className="Login-action-account">
                     <input
+                      onChange={onChangeAccount}
                       id="Form-account"
                       name="account"
                       required
@@ -35,6 +76,7 @@ const Login = () => {
                   </div>
                   <div className="Login-action-password">
                     <input
+                      onChange={onChangePassword}
                       id="Form-password"
                       name="password"
                       required
@@ -46,7 +88,7 @@ const Login = () => {
                     type="submit"
                     className={classNames({
                       "Login-btn": true,
-                      // "Show-click": showLoginBtn
+                      "Show-click": showLoginBtn
                     })}
                   >
                     Log in
@@ -73,17 +115,17 @@ const Login = () => {
         <div className="row">
           <div className="Login-footer d-xl-flex">
             <div className="Login-footer-link col-xl-9 col-6 mx-auto">
-              <a href="#">about</a>
-              <a href="#">help</a>
-              <a href="#">press</a>
-              <a href="#">api</a>
-              <a href="#">jobs</a>
-              <a href="#">privacy</a>
-              <a href="#">terms</a>
-              <a href="#">locations</a>
-              <a href="#">top accounts</a>
-              <a href="#">hashtags</a>
-              <a href="#">lagguage</a>
+              <a href="/">about</a>
+              <a href="/">help</a>
+              <a href="/">press</a>
+              <a href="/">api</a>
+              <a href="/">jobs</a>
+              <a href="/">privacy</a>
+              <a href="/">terms</a>
+              <a href="/">locations</a>
+              <a href="/">top accounts</a>
+              <a href="/">hashtags</a>
+              <a href="/">lagguage</a>
             </div>
             <div className="Login-footer-info mt-3 mt-xl-0">
               © 2020 INSTAGRAM FROM FACEBOOK

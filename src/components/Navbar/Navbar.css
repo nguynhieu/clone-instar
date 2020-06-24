@@ -1,0 +1,32 @@
+.Navbar {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 50px;
+  z-index: 1040;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.Navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.Navbar .Navbar-logo,
+.Navbar .Navbar-logo img {
+  width: 112px;
+}
+
+.Navbar .Navbar-action {
+  height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.Navbar .Navbar-action svg {
+  margin-left: 1rem
+}
