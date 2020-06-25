@@ -9,8 +9,13 @@
   justify-content: center;
 }
 
+.Login-header .col {
+  padding: 0
+}
+
 .Login-header .Login-form {
-  width: 320px;
+  width: 100%;
+  max-width: 320px;
   margin-top: 2rem;
 }
 

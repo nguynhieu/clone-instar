@@ -8,6 +8,11 @@
   margin-top: 1rem;
 }
 
+.Home.row {
+  flex-wrap: nowrap;
+  margin: 0 auto
+}
+
 .Home .Main {
   max-width: 614px;
   width: 100%;

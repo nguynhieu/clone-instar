@@ -17,7 +17,12 @@ const CreateNewFeed = () => {
       <h3>Make a Post</h3>
       <form
         encType="multipart/form-data"
-        onSubmit={handlePost(currentUser._id, caption, file)}
+        onSubmit={(e) => {
+          e.preventDefault();
+          handlePost(currentUser._id, caption, file);
+          setFile(null);
+          setCaption('');
+        }}
       >
         <textarea
           name="caption"
@@ -28,14 +33,13 @@ const CreateNewFeed = () => {
         />
         <input
           type="file"
-          accept=".jpg"
           className="CreateNewFeed-img"
           name="image"
           onChange={e => setFile(e.target.files[0])}
         />
         <button>
           +
-          </button>
+        </button>
       </form>
     </div>
   )
