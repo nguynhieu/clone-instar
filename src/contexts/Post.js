@@ -2,6 +2,8 @@ import React from 'react'
 import axios from 'axios'
 import moment from 'moment'
 
+import socket from '../service/socket'
+
 export const PostContext = React.createContext();
 
 export class PostProvider extends React.Component {
@@ -34,16 +36,13 @@ export class PostProvider extends React.Component {
       }).catch(err => console.log(err))
   }
 
-  handleLike(sender, viewer, postId, socket) {
+  handleLike(sender, viewer, postId) {
     const time = moment(new Date(), "YYYYMMDD").fromNow();
-
     socket.emit('client-like', {
-      sender, viewer, postId, time,
+      sender, viewer, postId, time
     });
-
     socket.on('like', data => {
-      console.log(data);
-      socket.emit('client-leave-room')
+      console.log(data)
     })
 
     axios.post('http://localhost:5000/posts/like', {

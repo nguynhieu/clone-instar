@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import { Link, Redirect } from 'react-router-dom'
 import { Container } from 'reactstrap'
 import axios from 'axios';
+import socket from '../../../service/socket'
 
 import './Login.css'
 import instar2 from '../../../public/images/instar2.png'
@@ -35,7 +36,11 @@ const Login = () => {
       localStorage.setItem('token', res.data.token)
       localStorage.setItem('user', JSON.stringify(res.data.user))
       setCurrentUser(res.data.user)
+
+      socket.emit('user-join-room', account)
+
       handleLogin()
+
     }).catch(err => {
       console.log(err)
     })

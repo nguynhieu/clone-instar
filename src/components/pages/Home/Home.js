@@ -1,5 +1,4 @@
-import React, { useContext, useEffect } from 'react'
-import io from 'socket.io-client'
+import React, { useContext } from 'react'
 
 import CreateNewFeed from '../../CreateNewFeed/CreateNewFeed';
 import { UserContext } from '../../../contexts/User';
@@ -10,19 +9,10 @@ import Loading from '../../Loading/Loading'
 
 import './Home.css'
 
-let socket;
-
 const Home = () => {
-  const ENDPOINT = 'localhost:5000'
-
   const { isLoaded } = useContext(PostContext)
   const { currentUser } = useContext(UserContext)
   const { posts } = useContext(PostContext)
-
-  useEffect(() => {
-    socket = io(ENDPOINT);
-    socket.emit('user-join-room', currentUser.username)
-  })
 
   if (isLoaded === false) {
     return <Loading />
@@ -36,7 +26,7 @@ const Home = () => {
           {
             posts.length &&
             posts.map((post, index) =>
-              <Post key={index} {...post} socket={socket} />
+              <Post key={index} {...post} />
             )
           }
         </div>

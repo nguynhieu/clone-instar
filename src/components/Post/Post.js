@@ -12,7 +12,7 @@ const Post = (props) => {
   const { handleLike, handleComment } = useContext(PostContext)
   const { currentUser } = useContext(UserContext);
 
-  const [content, setContent] = useState('')
+  const [content, setContent] = useState('');
   const [showBtn, setShowBtn] = useState(false);
 
   const time = moment(new Date(props.time), "YYYYMMDD").fromNow();
@@ -39,7 +39,7 @@ const Post = (props) => {
       <div className="Post-footer">
         <div className="Post-footer-action">
           <div className="Post-footer-heart" onClick={() => {
-            handleLike(currentUser.username, props.username, props._id, props.socket)
+            handleLike(currentUser.username, props.username, props._id)
           }}>
             {
               !props.likes.includes(currentUser.username) &&
@@ -68,8 +68,8 @@ const Post = (props) => {
         <div className="Post-count-view">{time}</div>
         <div className="Post-count-view">View all {props.comments.length} comments</div>
         <div className="Post-footer-comments">
-          {props.comments.map(cmt =>
-            <div className="Post-cmt">
+          {props.comments.map((cmt, index) =>
+            <div key={index} className="Post-cmt">
               <span>{cmt.username}</span>
               <span>{cmt.content}</span>
             </div>
