@@ -21,7 +21,6 @@ const Signup = () => {
   const [fullname, setFullname] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [errors, setErrors] = useState([]);
 
   const onChangeEmail = (e) => {
     setEmail(e.target.value);
@@ -78,7 +77,6 @@ const Signup = () => {
               </div>
               <form onSubmit={onSubmit}>
                 <div className="Signup-action">
-                  {errors.length > 0 && <div className="Signup-err">{errors.map(err => <div>{err}</div>)}</div>}
                   <div className="Signup-action-account">
                     <input
                       onChange={onChangeEmail}

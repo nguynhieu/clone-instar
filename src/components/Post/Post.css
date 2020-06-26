@@ -45,6 +45,7 @@
 
 .Post-footer .Post-footer-action div {
   margin: 0 .5rem;
+  cursor: pointer;
 }
 
 .Post-footer .Post-footer-action .Post-footer-mark {
@@ -78,6 +79,20 @@
   position: relative;
 }
 
+.Post-footer-comments {
+  margin-left: .5rem;
+  margin-top: .5rem;
+}
+
+.Post-footer-comments .Post-cmt span {
+  font-size: .925rem;
+}
+
+.Post-footer-comments .Post-cmt span:nth-child(1) {
+  font-weight: bold;
+  margin-right: .5rem;
+}
+
 .Post-footer input {
   width: 100%;
   border:none;
@@ -104,7 +119,7 @@
   pointer-events: none;
 }
 
-.Post-footer-input button.Show-btn {
+.Post-footer-input button.show {
   color: #0095f6;
   pointer-events: auto;
 }

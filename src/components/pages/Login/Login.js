@@ -32,7 +32,6 @@ const Login = () => {
     axios.post('http://localhost:5000/users/login', {
       account, password
     }).then(res => {
-      console.log(res.data)
       localStorage.setItem('token', res.data.token)
       localStorage.setItem('user', JSON.stringify(res.data.user))
       setCurrentUser(res.data.user)

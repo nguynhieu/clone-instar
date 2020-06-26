@@ -1,11 +1,10 @@
 import React, { useState, useContext } from 'react';
-import classNames from 'classnames'
 
 import './CreateNewFeed.css'
 import { PostContext } from '../../contexts/Post';
 import { UserContext } from '../../contexts/User';
 
-const CreateNewFeed = () => {
+const CreateNewFeed = (props) => {
   const { handlePost } = useContext(PostContext);
   const { currentUser } = useContext(UserContext);
 
@@ -19,7 +18,7 @@ const CreateNewFeed = () => {
         encType="multipart/form-data"
         onSubmit={(e) => {
           e.preventDefault();
-          handlePost(currentUser._id, caption, file);
+          handlePost(currentUser._id, caption, file, currentUser.username, props.socket);
           setFile(null);
           setCaption('');
         }}

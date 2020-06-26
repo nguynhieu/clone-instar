@@ -19,9 +19,9 @@ const Home = () => {
   const { currentUser } = useContext(UserContext)
   const { posts } = useContext(PostContext)
 
-  console.log(isLoaded)
   useEffect(() => {
     socket = io(ENDPOINT);
+    socket.emit('user-join-room', currentUser.username)
   })
 
   if (isLoaded === false) {
@@ -32,15 +32,15 @@ const Home = () => {
     <div className="container">
       <div className="Home row">
         <div className="Main">
-          <CreateNewFeed></CreateNewFeed>
+          <CreateNewFeed />
           {
             posts.length &&
-            posts.map(post =>
-              <Post {...post} />
+            posts.map((post, index) =>
+              <Post key={index} {...post} socket={socket} />
             )
           }
         </div>
-        <div className="Sidebar">
+        <div className="Sidebar d-none d-lg-block">
           <div className="Sidebar-header">
             {
               currentUser.avatar &&

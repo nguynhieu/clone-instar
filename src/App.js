@@ -19,11 +19,11 @@ import { PostProvider } from './contexts/Post';
 
 function AppWrapper() {
   return (
-    <PostProvider>
-      <UserProvider>
+    <UserProvider>
+      <PostProvider>
         <App />
-      </UserProvider >
-    </PostProvider >
+      </PostProvider >
+    </UserProvider >
   )
 }
 
