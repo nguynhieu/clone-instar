@@ -36,7 +36,7 @@ const Signup = () => {
   }
   const onSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:5000/users/signup', {
+    axios.post('https://server-instar-clone.herokuapp.com/users/signup', {
       email, fullname, username, password
     }).then(res => {
       console.log(res);

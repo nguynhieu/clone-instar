@@ -33,7 +33,7 @@ const Login = () => {
   const onSubmit = (e) => {
     e.preventDefault()
 
-    axios.post('http://localhost:5000/users/login', {
+    axios.post('https://server-instar-clone.herokuapp.com/users/login', {
       account, password
     }).then(res => {
       localStorage.setItem('token', res.data.token)

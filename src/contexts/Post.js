@@ -26,7 +26,7 @@ export class PostProvider extends React.Component {
     data.append('caption', caption)
     data.append('image', image)
 
-    axios.post('http://localhost:5000/posts', data)
+    axios.post('https://server-instar-clone.herokuapp.com/posts', data)
       .then(res => {
         this.state.posts.unshift(res.data);
 
@@ -48,7 +48,7 @@ export class PostProvider extends React.Component {
       console.log(data)
     })
 
-    axios.post('http://localhost:5000/posts/like', {
+    axios.post('https://server-instar-clone.herokuapp.com/posts/like', {
       sender, viewer, postId, time
     })
       .then(res => {
@@ -60,7 +60,7 @@ export class PostProvider extends React.Component {
   }
 
   handleComment(sender, postId, content) {
-    axios.post('http://localhost:5000/posts/comment', {
+    axios.post('https://server-instar-clone.herokuapp.com/posts/comment', {
       sender, postId, content
     })
       .then(res => {
@@ -72,7 +72,7 @@ export class PostProvider extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:5000/posts')
+    axios.get('https://server-instar-clone.herokuapp.com/posts')
       .then(res => this.setState({
         posts: res.data.reverse(),
         isLoaded: true

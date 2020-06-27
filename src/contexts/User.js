@@ -39,7 +39,7 @@ export class UserProvider extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:5000/users')
+    axios.get('https://server-instar-clone.herokuapp.com/users')
       .then(res => this.setState({ userList: res.data }))
     const token = localStorage.getItem('token');
     const user = JSON.parse(localStorage.getItem('user'));
