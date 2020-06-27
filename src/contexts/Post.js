@@ -38,9 +38,12 @@ export class PostProvider extends React.Component {
 
   handleLike(sender, viewer, postId) {
     const time = moment(new Date(), "YYYYMMDD").fromNow();
-    socket.emit('client-like', {
-      sender, viewer, postId, time
-    });
+    if (sender !== viewer) {
+      socket.emit('client-like', {
+        sender, viewer, postId, time
+      });
+    }
+
     socket.on('like', data => {
       console.log(data)
     })

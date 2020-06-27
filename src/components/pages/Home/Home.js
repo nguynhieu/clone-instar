@@ -7,12 +7,16 @@ import avatar from '../../../public/images/avatar.png'
 import Post from '../../Post/Post';
 import Loading from '../../Loading/Loading'
 
+import socket from '../../../service/socket';
+
 import './Home.css'
 
 const Home = () => {
   const { isLoaded } = useContext(PostContext)
   const { currentUser } = useContext(UserContext)
   const { posts } = useContext(PostContext)
+
+  socket.emit('user-join-room', currentUser.username);
 
   if (isLoaded === false) {
     return <Loading />
