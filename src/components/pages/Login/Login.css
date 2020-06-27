@@ -32,6 +32,19 @@
   text-align: center;
 }
 
+.Login form {
+  position: relative;
+}
+
+.Login .Login-error {
+  position: absolute;
+  top: -1.5rem;
+  color: #cf1919;
+  font-size: .875rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .Login .Login-logo {
   width: 175px;
   height: 51px;

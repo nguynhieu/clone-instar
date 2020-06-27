@@ -15,16 +15,19 @@ import { UserContext } from '../../../contexts/User'
 const Login = () => {
   const { isLogined, handleLogin, setCurrentUser } = useContext(UserContext)
 
+  const [err, setErr] = useState(null)
   const [account, setAccount] = useState('')
   const [password, setPassword] = useState('')
-  const [showLoginBtn, setShowLoginBtn] = useState(false);
+  const [showLoginBtn, setShowLoginBtn] = useState(false)
 
   const onChangeAccount = (e) => {
     setAccount(e.target.value);
+    setErr(null)
   }
 
   const onChangePassword = (e) => {
     setPassword(e.target.value);
+    setErr(null)
   }
 
   const onSubmit = (e) => {
@@ -42,7 +45,7 @@ const Login = () => {
       handleLogin()
 
     }).catch(err => {
-      console.log(err)
+      setErr(err.response.data);
     })
   }
 
@@ -67,6 +70,7 @@ const Login = () => {
             <div className="Login">
               <div className="Login-logo" />
               <form onSubmit={onSubmit}>
+                {err && <div className="Login-error">{err}</div>}
                 <div className="Login-action">
                   <div className="Login-action-account">
                     <input
