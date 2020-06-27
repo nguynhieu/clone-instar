@@ -28,7 +28,10 @@ const Home = () => {
         <div className="Main">
           <CreateNewFeed />
           {
-            posts.length &&
+            posts.length > 0 && <div>No have posts</div>
+          }
+          {
+            posts.length > 0 &&
             posts.map((post, index) =>
               <Post key={index} {...post} />
             )
